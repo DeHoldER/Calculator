@@ -1,33 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    tools:context=".MainActivity">
-
-<!--    Выбрал для проекта constraint, т.к. хотел потренироваться,-->
-<!--    а так же в виду того, что он наиболее гибкий и есть возможнось -->
-<!--    быстрого внесения изменений в структуру.-->
-<!--    Заинклюдил лейаут с кнопками в мейн активти, т.к. расположение-->
-<!--    кнопок дублируется для обеих ориентаций экрана и в случае изменений-->
-<!--    не придётся править оба лейаута.-->
-
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:rotation="90"
-        android:scaleX="1.9"
-        android:scaleY="1.9"
+        android:scaleX="1"
+        android:scaleY="2.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/background_image" />
 
     <include
-        android:id="@+id/include"
         layout="@layout/layout_calculator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
