@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_width">70dp</dimen>
+    <dimen name="button_height">50dp</dimen>
+    <dimen name="button_plus_height">100dp</dimen>
+    <dimen name="output_screen_width">300dp</dimen>
+    <dimen name="on_button_text_size">20sp</dimen>
+</resources>
