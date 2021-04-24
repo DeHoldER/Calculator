@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ButtonStyle">
+        <item name="android:textSize">@dimen/on_button_text_size</item>
+        <item name="android:textColor">@color/button_text_color</item>
+        <item name="android:layout_width">@dimen/button_width</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:backgroundTint">@color/button_num</item>
+        <item name="android:layout_marginStart">@dimen/margin_button</item>
+    </style>
+
+    <style name="ButtonStyle.FUNC" parent="ButtonStyle">
+        <item name="android:backgroundTint">@color/button_func</item>
+    </style>
+
+    <style name="OutputScreen">
+        <item name="android:background">@color/output_screens_bg_color</item>
+        <item name="android:textColor">@color/output_screens_text_color</item>
+        <item name="android:textSize">@dimen/output_screens_font_size</item>
+    </style>
+
+</resources>
