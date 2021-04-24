@@ -16,16 +16,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView mOutputScreen;
     private TextView mActionChar;
 
-    private Button mButton0;
-    private Button mButton1;
-    private Button mButton2;
-    private Button mButton3;
-    private Button mButton4;
-    private Button mButton5;
-    private Button mButton6;
-    private Button mButton7;
-    private Button mButton8;
-    private Button mButton9;
+    private final int[] numberButtonIds = new int[]{R.id.button0,
+            R.id.button1, R.id.button2, R.id.button3,
+            R.id.button4, R.id.button5, R.id.button6,
+            R.id.button7, R.id.button8, R.id.button9};
+
     private Button mButtonPt;
 
     private Button mButtonCancel;
@@ -76,16 +71,6 @@ public class MainActivity extends AppCompatActivity {
         mOutputScreen = findViewById(R.id.output_screen);
         mActionChar = findViewById(R.id.action_char);
 
-        mButton0 = findViewById(R.id.button0);
-        mButton1 = findViewById(R.id.button1);
-        mButton2 = findViewById(R.id.button2);
-        mButton3 = findViewById(R.id.button3);
-        mButton4 = findViewById(R.id.button4);
-        mButton5 = findViewById(R.id.button5);
-        mButton6 = findViewById(R.id.button6);
-        mButton7 = findViewById(R.id.button7);
-        mButton8 = findViewById(R.id.button8);
-        mButton9 = findViewById(R.id.button9);
         mButtonPt = findViewById(R.id.buttonPt);
 
         mButtonCancel = findViewById(R.id.button_cancel);
@@ -97,16 +82,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initButtonListeners() {
-        addButtonListener(mButton0);
-        addButtonListener(mButton1);
-        addButtonListener(mButton2);
-        addButtonListener(mButton3);
-        addButtonListener(mButton4);
-        addButtonListener(mButton5);
-        addButtonListener(mButton6);
-        addButtonListener(mButton7);
-        addButtonListener(mButton8);
-        addButtonListener(mButton9);
+        setNumberButtonListeners();
 
         addFuncButtonListener(mButtonPt);
         addFuncButtonListener(mButtonPlus);
@@ -123,22 +99,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // СЛУШАТЕЛЬ ЦИФРОВЫХ КНОПОК
-    private void addButtonListener(Button button) {
-        button.setOnClickListener(v -> onNumButtonClick(button));
+    private void setNumberButtonListeners() {
+        for (int i = 0; i < numberButtonIds.length; i++) {
+            int index = i;
+            findViewById(numberButtonIds[i]).setOnClickListener(v -> {
+
+                if (!(calculator.stringBuilder.length() == 0 && index == 0)) {
+                    calculator.stringBuilder.append(String.valueOf(index));
+                    printNumOnScreen();
+                }
+            });
+        }
     }
 
     // СЛУШАТЕЛЬ ФУНКЦИОНАЛЬНЫХ КНОПОК
     private void addFuncButtonListener(Button button) {
         button.setOnClickListener(v -> onFuncButtonClick(button));
-    }
-
-    private void onNumButtonClick(Button button) {
-        // Если число = 0, то блокируем добавление нулей по нажатию на кнопку 0
-        if (!(calculator.stringBuilder.length() == 0 && button == mButton0)) {
-            calculator.stringBuilder.append(button.getText().toString());
-            printNumOnScreen();
-        }
     }
 
     private void onFuncButtonClick(Button button) {
