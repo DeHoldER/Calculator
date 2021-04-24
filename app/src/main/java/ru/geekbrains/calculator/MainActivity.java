@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (!calculator.isCurrentFractionalNumber()) {
-            mOutputScreen.setText("." + mOutputScreen.getText());
+            mOutputScreen.setText(getResources().getString(R.string.point_template, mOutputScreen.getText()));
             calculator.stringBuilder.append(".");
             calculator.setCurrentFractionalNumber(true);
         }

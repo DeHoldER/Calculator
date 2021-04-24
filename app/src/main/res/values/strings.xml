@@ -27,4 +27,6 @@
     <string name="description_text">Настройки приложения</string>
     <string name="theme_switch_text">Тёмная тема</string>
     <string name="button_back_text"><![CDATA[< Назад]]></string>
+
+    <string name="point_template">.%s</string>
 </resources>

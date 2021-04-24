@@ -1,5 +1,6 @@
 package ru.geekbrains.calculator;
 
+import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -96,7 +97,7 @@ public class CalculatorHandler implements Parcelable {
         String out = String.valueOf(firstNumber);
         Double outDouble = firstNumber;
         // Если не стоит флаг, что число дробное, или если на конце .0, то округляем строку форматом
-        if (!isFractionalNumber || out.endsWith(".0")) {
+        if (!isFractionalNumber || ((long)firstNumber == firstNumber)) {
             out = String.format("%.0f", firstNumber);
         } else {
             out = String.valueOf(outDouble);
