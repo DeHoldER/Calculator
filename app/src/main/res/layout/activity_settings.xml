@@ -20,15 +20,15 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/activity_description"
-        android:text="@string/description_text"
+        style="@style/OutputScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/settings_text_size"
+        android:text="@string/description_text"
         android:textAlignment="center"
+        android:textSize="@dimen/settings_text_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/OutputScreen" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/night_mode_switch"
@@ -42,15 +42,15 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_back"
+        style="@style/ButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/button_func"
         android:text="@string/button_back_text"
+        android:textSize="@dimen/settings_button_text_size"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/night_mode_switch"
-        android:backgroundTint="@color/button_func"
-        android:textStyle="normal"
-        android:textSize="@dimen/settings_button_text_size"
-        style="@style/ButtonStyle" />
+        app:layout_constraintTop_toBottomOf="@+id/night_mode_switch" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
