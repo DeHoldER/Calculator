@@ -49,10 +49,8 @@ public class SettingsActivity extends AppCompatActivity {
         mNightModeSwitch = findViewById(R.id.night_mode_switch);
 
         if (MainActivity.NIGHT_MODE_STATE) {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             mNightModeSwitch.setChecked(true);
         } else {
-//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             mNightModeSwitch.setChecked(false);
         }
     }

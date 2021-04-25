@@ -135,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     // СЛУШАТЕЛЬ ФУНКЦИОНАЛЬНЫХ КНОПОК
     private void addFuncButtonListener(Button button) {
         button.setOnClickListener(v -> onFuncButtonClick(button));
