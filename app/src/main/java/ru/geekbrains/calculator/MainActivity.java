@@ -2,7 +2,10 @@ package ru.geekbrains.calculator;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
     private final static String keyCalculatorState = "CalculatorState";
 
     private CalculatorHandler calculator;
+
+    SharedPreferences sharedPreferences;
+    public static boolean NIGHT_MODE_STATE;
 
     private TextView mOutputScreen;
     private TextView mActionChar;
@@ -29,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mButtonMultiply;
     private Button mButtonDivide;
     private Button mButtonEquals;
+
+    private Button mButtonSettings;
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle instanceState) {
@@ -49,22 +57,28 @@ public class MainActivity extends AppCompatActivity {
         } else printNumOnScreen(calculator.getStringResult());
     }
 
-    void aplog() {
-//        System.out.println("aplog (sb length): " + calculator.stringBuilder.length());
-//        System.out.println("aplog (sb): " + calculator.stringBuilder.toString());
-//        System.out.println("aplog (firstNum): " + calculator.getFirstNumber());
-        System.out.println("aplog (action): " + calculator.getAction());
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        nightModeCheck();
         setContentView(R.layout.activity_main);
 
         calculator = new CalculatorHandler();
 
         initView();
         initButtonListeners();
+
+    }
+
+    private void nightModeCheck() {
+        sharedPreferences = getSharedPreferences("Theme", MODE_PRIVATE);
+        NIGHT_MODE_STATE = sharedPreferences.getBoolean("mode", false);
+
+        if (NIGHT_MODE_STATE) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 
     private void initView() {
@@ -79,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
         mButtonMultiply = findViewById(R.id.button_multiply);
         mButtonDivide = findViewById(R.id.button_divide);
         mButtonEquals = findViewById(R.id.button_equals);
+
+        mButtonSettings = findViewById(R.id.button_settings);
     }
 
     private void initButtonListeners() {
@@ -97,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
             mOutputScreen.setText("0");
             mActionChar.setText("");
         });
+
+        mButtonSettings.setOnClickListener(v -> {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+//            this.finish();
+        });
     }
 
     private void setNumberButtonListeners() {
@@ -111,6 +133,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
 
     // СЛУШАТЕЛЬ ФУНКЦИОНАЛЬНЫХ КНОПОК
     private void addFuncButtonListener(Button button) {
